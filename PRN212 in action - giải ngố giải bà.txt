@@ -1,0 +1,73 @@
+PRN212 in action - giải ngố giải bài thi PE
+
+0. Cài Tool để Generate entity class từ database
+	cài tool gọi là entity framework core (ef core, ef)
+	là 1 tool chạy ở cmd, đi kèm với lệnh đi kèm .net đã từng học đầu kỳ
+	tool này cài ở nhà trước, vào phòng thi không cần cài lại
+mở cmd mở lệnh: dotnet tool install --global dotnet-ef
+máy cần kết nối internet để tải tool về, thường sẽ báo update lên version bao nhiêu, hôm nay báo version 8.0.10
+
+
+* check lại coi đã cài thành công chưa: gõ lệnh dotnet tool list --global.
+sẽ thấy báo ra ef tool version .10 đã có !!
+I. Tạo mới SOLUTION và WPF project theo đúng tên trường quy ước.
+1. Nhớ thay từ khóa StudentName thành tên của mình, lưu ý mã số đề thi xuất hiện trong tên PROJECT và SOLUTION. Tốt nhất copy từ đề thi vào.
+2. Không lưu bài thi ở thư mục có dính đến ONEDRIVE, GOOGLEDRIVE vì sẽ bị lock/xung đột với tool đồng bộ. Nên lưu ở ngay ổ đĩa D. để có đường dẫn đến SOURCE ngắn.
+
+II. Tạo mới 2 class LIBRARY PROJECT (2 thằng thư viện, kh .EXE)
+1. Đặt tên lấy 1 phần tên của PROJECT chính.
+VD:
+AirConditionerShop.DAL (DATA ACCESS LAYER)
+	- chứa vài class liên quán đến table, database
+	- thằng này chứa các class map trực tiếp xuống table!!! ENTITY CLASSES.
+AirConditionerShop.BLL (BUSINESS LOGIC LAYER)
+	- chứa vài class liên quan đến xử lý các ENTITIES class nhưng trong RAM.
+Mô hình 3 lớp 3-layer: WPF(GUI) ---- BLL ---- DAL ---- TABLE thực sự
+
+* nhớ add DEPENDENCE REFERENCE TỪ 
+GUI - BLL
+BLL - DAL
+đừng quên check copy local [X]
+
+III. GENERATE các entity class (cụ thể là 3 class) map từ table map lên.
+(từ table -> class gọi là database first)
+(từ class -> table thì gọi là code first)
+
+đề thi PE là DB FIRST tức là ta có sẵn 3 table, giờ ta generate ngược ra 3 cái entity class giống như table student -> class student mình học bấy lâu nay
+- ta xài tool vừa cài đặt ở step 0
+- ta cần cài thêm 6 thư viện trên internet (package, library, dependency)
+package.json (node, react)
+pom.xml (java)
+nuget package (C#)
+
+- lúc này cần yêu cầu giám thị phòng thi cho mình kết nối internet để download dependency!!!
+- thực tế ta chỉ đồng bộ nhẹ thư viện ở trên mạng về do hôm nay mình đã làm rồi!!
+
+6 THƯ VIỆN TÊN NHƯ SAU (FILE NOTE TRONG ĐỀ THI CÓ GHI CHÚ LUÔN TÊN THƯ VIỆN NHƯNG MÀ PHẢI NHỚ)
+
+	Microsoft.EntityFrameworkCore
+	Microsoft.EntityFrameworkCore.Design
+	Microsoft.EntityFrameworkCore.Tool
+	Microsoft.EntityFrameworkCore.SqlSever
+
+	Microsoft.Extendsions.Configuration
+	Microsoft.Extendsions.Configuration.Json
+1. vào project DAL (dính database), phải chuột trên dependency chọn manage nuget packages, nhấn browse rồi gõ entity rồi chọn enter, rồi chọn 4 cháu ef ở trên, tích vào từng thằng, install, chờ dấu tích xanh mới làm thằng khác
+
+2. câu lệnh quan trọng không thể thiếu, không làm, mất 9tr vnd (6tr kì này + 3m kì sau)
+nhớ build solution để VS nó refresh cái tool và cái thue viện vừa add, néu kh các lệnh DB FIRST, GENERATE CLASS từ database dễ bị lỗi !!!
+MENU BUID -> REBUILD SOLUTION
+- thấy message thành công !!!
+
+3. GENERATE CÁC ENTITY CLASS TỪ 3 TABLE
+
+chạy 1 lệnh, 3 table, nhưng dc 4 class(mua 3 dc 4)
+mở file note lên có câu lệnh gợi í, lấy câu lệnh này, sửa lại password máy mình	
+
+* ấn phải chuột trên DAL project, chọn termial để mở cmd cbi gõ lệnh
+* copy cái câu lệnh DBCONTEXT trong file note, dán vào cmd (phải chuội là paste) và ấn enter
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database=AirConditionerShop2024DB;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir "Entities" --context-dir "."
+
+* nhân phẩm tốt thì thành công có 4 class đc tự động tạo ra!!!
+
+>>>> một số máy kh chịu dùng (local) trong chuỗi kết nối CSDL, thay bằng tên máy và instance của SQL Sever

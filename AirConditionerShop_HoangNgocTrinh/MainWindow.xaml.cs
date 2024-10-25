@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using AirConditionerShop.BLL.Services;
+using AirConditionerShop.DAL.Entities;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,7 +18,7 @@ namespace AirConditionerShop_HoangNgocTrinh
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        private AirConService AirConService = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -26,6 +28,11 @@ namespace AirConditionerShop_HoangNgocTrinh
         {
             DetailWindow d = new();
             d.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AirCondDataGrid.ItemsSource = AirConService.GetAllAirCons();
         }
     }
 }

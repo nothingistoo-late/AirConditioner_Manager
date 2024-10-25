@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirConditionerShop_HoangNgocTrinh"
         mc:Ignorable="d"
-        Title="Thế Giới Điện Tử Xứ F - ver.24-SU" Height="685" Width="1265" Background="#ff2800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+        Title="Thế Giới Điện Tử Xứ F - ver.24-SU" Height="685" Width="1265" Background="#ff2800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" >
     <Grid>
 
         <Label Content="Thế Giới Điện Tử Xứ F" HorizontalAlignment="Left" Height="80" Margin="31,20,0,0" VerticalAlignment="Top" Width="569" FontWeight="Heavy" FontSize="50" FontStyle="Italic" Foreground="Yellow"/>

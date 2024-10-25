@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AirConditionerShop.BLL\AirConditionerShop.BLL.csproj">
-      <Private>True</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\AirConditionerShop.BLL\AirConditionerShop.BLL.csproj" />
   </ItemGroup>
 
 </Project>

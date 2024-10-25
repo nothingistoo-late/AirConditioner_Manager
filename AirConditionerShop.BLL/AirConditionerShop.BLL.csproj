@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AirConditionerShop.DAL\AirConditionerShop.DAL.csproj">
-      <Private>True</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\AirConditionerShop.DAL\AirConditionerShop.DAL.csproj" />
   </ItemGroup>
 
 </Project>

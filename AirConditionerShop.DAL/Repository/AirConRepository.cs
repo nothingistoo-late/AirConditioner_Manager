@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirConditionerShop.DAL.Repository
 {
-    public class AirConReppository
+    public class AirConRepository
     {
         // logic/ flow chạy
         // GUI(WPF) -- BLL (Service) -- DAL (REPO) -- DBCONTEXT -- TABLE THẬT 

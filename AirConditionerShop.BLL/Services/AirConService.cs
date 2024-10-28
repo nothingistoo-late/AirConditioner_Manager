@@ -18,5 +18,20 @@ namespace AirConditionerShop.BLL.Services
             return _repo.GetAll();
         }
 
+        public void Delete(AirConditioner obj)
+        {
+            _repo.Delete(obj); // xong, bán cái cho repo
+                               // repo bán cái cho dbcontext
+        }
+
+        public void Update(AirConditioner obj)
+        {
+            _repo.Update(obj);
+        }
+
+        public void Add(AirConditioner obj)
+        {
+            _repo.Create(obj);
+        }
     }
 }

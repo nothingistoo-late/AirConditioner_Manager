@@ -21,9 +21,9 @@
 
         <Button x:Name="CreateButton" Content="Create Air Con" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3" Click="CreateButton_Click"/>
         <Button x:Name="UpdateButton" Content="Update Air Con" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
-                " TabIndex="4" />
+                " TabIndex="4" Click="UpdateButton_Click" />
         <Button x:Name="DeleteButton" Content="Delete Air Con" HorizontalAlignment="Left" Height="50" Margin="1003,444,0,0" VerticalAlignment="Top" Width="185
-                " TabIndex="5" />
+                " TabIndex="5" Click="DeleteButton_Click" />
         <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="50" Margin="1003,540,0,0" VerticalAlignment="Top" Width="185" TabIndex="6" />
 
         <DataGrid x:Name="AirCondDataGrid" HorizontalAlignment="Left" Height="310" Margin="34,280,0,0" VerticalAlignment="Top" Width="958" AutoGenerateColumns="False" TabIndex="7" >

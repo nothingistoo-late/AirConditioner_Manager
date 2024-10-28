@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirConditionerShop_HoangNgocTrinh"
         mc:Ignorable="d"
-        Title="Air Conditioner Detail" Height="755" Width="1150" Background="#ff2800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+        Title="Air Conditioner Detail" Height="755" Width="1150" Background="#ff2800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
     <Grid>
         <Label x:Name="DetailWindowMode" Content="Create | Update Air Conditioner" HorizontalAlignment="Left" Height="80" Margin="38,20,0,0" VerticalAlignment="Top" Width="814" FontWeight="Heavy" FontSize="40" FontStyle="Italic" Foreground="Yellow"/>
 
@@ -33,9 +33,9 @@
         <TextBox x:Name="DollarPriceTextBox" HorizontalAlignment="Left" Height="45" Margin="615,549,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244" TabIndex="6"/>
 
         <Label Content="Supplier ID" HorizontalAlignment="Left" Height="45" Margin="58,615,0,0" VerticalAlignment="Top" Width="147" Foreground="#ff4500"/>
-        <ComboBox x:Name="SupplierIdComboBox" HorizontalAlignment="Left" Height="45" Margin="223,613,0,0" VerticalAlignment="Top" Width="290" Background="#ff4500" TabIndex="7" FontWeight="Bold" FontSize="18"/>
+        <ComboBox x:Name="SupplierIdComboBox" HorizontalAlignment="Left" Height="45" Margin="223,613,0,0" VerticalAlignment="Top" Width="290" Background="#ff4500" TabIndex="7" FontWeight="Bold" FontSize="18" SelectionChanged="SupplierIdComboBox_SelectionChanged"/>
 
-        <Button x:Name="SaveButton" Content="Save Air Con" HorizontalAlignment="Left" Height="50" Margin="945,128,0,0" VerticalAlignment="Top" Width="165" TabIndex="8" />
+        <Button x:Name="SaveButton" Content="Save Air Con" HorizontalAlignment="Left" Height="50" Margin="945,128,0,0" VerticalAlignment="Top" Width="165" TabIndex="8" Click="SaveButton_Click" />
         <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Height="50" Margin="945,208,0,0" VerticalAlignment="Top" Width="165" TabIndex="9" />
 
     </Grid>

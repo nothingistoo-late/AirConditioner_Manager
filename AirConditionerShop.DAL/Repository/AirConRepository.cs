@@ -29,5 +29,30 @@ namespace AirConditionerShop.DAL.Repository
             //              trả về DBSet mình convert thành List
             // đã select * from AirConditioner
         }
+
+        // hàm create(), update(), delete() đều nhận vào 1 object
+        // gọi dbcontext.aircons là cái arrayList, mà arrayList là cái túi 3 gang, là cái cabinet, thoải mái cập nhật, .add(), .remove(), .delete()
+
+        public void Delete(AirConditioner obj)// obj muốn xóa, có id muốn xóa, nằm ở selected ở gui
+        {
+            _context.AirConditioners.Remove(obj);
+            // build câu delete from where obj.ID
+            _context.SaveChanges(); // chính thức lệnh xóa trong RAM
+        }
+
+        public void Update(AirConditioner obj)// obj muốn update, có id muốn update, nằm ở selected ở gui
+        {
+            _context.AirConditioners.Update(obj);
+            // build câu cập nhật from where obj.ID
+            _context.SaveChanges(); // chính thức lệnh xóa trong RAM
+        }
+
+        public void Create(AirConditioner obj)// obj muốn Create, có id muốn create, nằm ở selected ở gui
+        {
+            _context.AirConditioners.Add(obj);
+            // build câu insert into
+            _context.SaveChanges(); // chính thức lệnh xóa trong RAM
+        }
+
     }
 }

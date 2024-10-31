@@ -33,7 +33,7 @@
         <TextBox x:Name="DollarPriceTextBox" HorizontalAlignment="Left" Height="45" Margin="615,549,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="244" TabIndex="6"/>
 
         <Label Content="Supplier ID" HorizontalAlignment="Left" Height="45" Margin="58,615,0,0" VerticalAlignment="Top" Width="147" Foreground="#ff4500"/>
-        <ComboBox x:Name="SupplierIdComboBox" HorizontalAlignment="Left" Height="45" Margin="223,613,0,0" VerticalAlignment="Top" Width="290" Background="#ff4500" TabIndex="7" FontWeight="Bold" FontSize="18" SelectionChanged="SupplierIdComboBox_SelectionChanged"/>
+        <ComboBox x:Name="SupplierIdComboBox" HorizontalAlignment="Left" Height="33" Margin="223,613,0,0" VerticalAlignment="Top" Width="290" Background="#ff4500" TabIndex="7" FontWeight="Bold" FontSize="18" SelectionChanged="SupplierIdComboBox_SelectionChanged"/>
 
         <Button x:Name="SaveButton" Content="Save Air Con" HorizontalAlignment="Left" Height="50" Margin="945,128,0,0" VerticalAlignment="Top" Width="165" TabIndex="8" Click="SaveButton_Click" />
         <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Height="50" Margin="945,208,0,0" VerticalAlignment="Top" Width="165" TabIndex="9" />

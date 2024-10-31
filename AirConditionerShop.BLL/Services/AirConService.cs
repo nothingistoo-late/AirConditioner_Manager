@@ -24,14 +24,10 @@ namespace AirConditionerShop.BLL.Services
                                // repo bán cái cho dbcontext
         }
 
-        public void Update(AirConditioner obj)
-        {
-            _repo.Update(obj);
-        }
+        public void Update(AirConditioner obj) => _repo.Update(obj);
+        
 
-        public void Add(AirConditioner obj)
-        {
-            _repo.Create(obj);
-        }
+        public void Add(AirConditioner obj) => _repo.Create(obj);
+        
     }
 }

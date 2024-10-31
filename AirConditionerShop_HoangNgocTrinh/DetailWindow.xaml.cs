@@ -1,4 +1,5 @@
 ﻿using AirConditionerShop.BLL.Services;
+using AirConditionerShop.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,16 @@ namespace AirConditionerShop_HoangNgocTrinh
         private AirConService _AirConService = new();
         private SupplierService _SupplierService = new();
 
+        // ta chế thêm trong class detail này 1 prop để hứng cái selected aircon từ bên main window chuyển sang ở mode edit 
+        // tức là mode edit là ta cần edit infor của 1 object/ aircon nào đó, cho nên ở class này phải có biển để lưu,, trỏ cái máy lạnh thằng edit
+        // còn màn hình này, class này mở, dc new ở chế độ create mode, kh cần biến này, prop này vì create mode là màn hình trắng trơn
+        // prop này đóng vai trò biên flag để quyết định mode của class này là mode create hay update nhờ có mode/flag ta biết dc nút save khi nhấn sẽ gọi hàm insert in to hay hàm update from của service, vì 1 màn hình vừa xài create vừa update
+
+        public AirConditioner EditedOne { get; set; }
+        // new class này mà kh nói năng thì cả thì nó null
+        // nếu nó dc .EditedOne = selected từ bên main nghĩa là chế độ edit 
+        // ta xài editedOne. để lấy các infor của máy lạnh để fill vào các ô nhập 
+
 
         public DetailWindow()
         {
@@ -45,9 +56,21 @@ namespace AirConditionerShop_HoangNgocTrinh
             // đổ combo hoy
 
             SupplierIdComboBox.ItemsSource = _SupplierService.GetAllNCC();
-
             SupplierIdComboBox.DisplayMemberPath = "SupplierName";
             SupplierIdComboBox.SelectedValuePath = "SupplierId";
+
+
+
+            if (EditedOne != null) { // là đang ở edited mode
+                // đổi data của object vào GUI
+                AirConditionerIdTextBox.Text = EditedOne.AirConditionerId.ToString();
+                AirConditionerNameTextBox.Text = EditedOne?.AirConditionerName;
+                WarrantyTextBox.Text = EditedOne?.Warranty;
+                SoundPressureLevelTextBox.Text = EditedOne?.SoundPressureLevel;
+                FeatureFunctionTextBox.Text = EditedOne?.FeatureFunction;
+                QuantityTextBox.Text = EditedOne?.Quantity.ToString();
+                DollarPriceTextBox.Text = EditedOne?.DollarPrice.ToString();
+            }
         }
 
         private void SupplierIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,8 +80,22 @@ namespace AirConditionerShop_HoangNgocTrinh
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // in thử coi 
-            MessageBox.Show("Ban Da Chon Nha Cung Cap :" + SupplierIdComboBox.SelectedValue.ToString());
+
+            // nút save xài chung cho edited mode và create mode nên ta cần phân biệt khi nào gọi create hay edit, may quá ta có biến EditedOne
+            // kiểu gì thì kiểu, vẫn phải cbi 1 object để đưa 2 hàm của service
+
+            AirConditioner obj = new(); // kh chơi object initialization vì nó dài 
+            obj.AirConditionerId = int.Parse(AirConditionerIdTextBox.Text);
+            obj.AirConditionerName = AirConditionerNameTextBox.Text;
+            obj.Warranty = WarrantyTextBox.Text;    
+            obj.FeatureFunction = FeatureFunctionTextBox.Text;
+            obj.SoundPressureLevel = SoundPressureLevelTextBox.Text;
+            obj.Quantity = int.Parse(QuantityTextBox.Text);
+            obj.DollarPrice = double.Parse(DollarPriceTextBox.Text);
+            obj.SupplierId = SupplierIdComboBox.SelectedValue.ToString();
         }
+
+
+
     }
 }

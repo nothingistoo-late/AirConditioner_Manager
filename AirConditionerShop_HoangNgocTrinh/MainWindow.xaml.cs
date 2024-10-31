@@ -63,6 +63,8 @@ namespace AirConditionerShop_HoangNgocTrinh
             DetailWindow d = new();
             // todo: hết sức cẩn thận, phải gửi thằng selected qua màn hình detail
             // để detail có object mà show ra khi edit
+            d.EditedOne = selected; // 2 chàng 1 nàng
+            // chốt hạ: 2 biến object mà gán bằng nhau, nghĩa là trỏ cùng nghĩa là truyền tham chiếu, trỏ cùng 1 chỗ, vì nếu tạo mới object thì phải có toán tử new dc đem ra dùng
             d.ShowDialog();
             FillDataGrid(_AirConService.GetAllAirCons());
         }

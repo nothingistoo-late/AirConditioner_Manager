@@ -93,6 +93,12 @@ namespace AirConditionerShop_HoangNgocTrinh
             obj.Quantity = int.Parse(QuantityTextBox.Text);
             obj.DollarPrice = double.Parse(DollarPriceTextBox.Text);
             obj.SupplierId = SupplierIdComboBox.SelectedValue.ToString();
+
+            if (EditedOne != null) 
+                _AirConService.Update(obj);
+            else
+                    _AirConService.Add(obj);
+            this.Close();
         }
 
 

@@ -35,6 +35,7 @@ namespace AirConditionerShop.DAL.Repository
 
         public void Delete(AirConditioner obj)// obj muốn xóa, có id muốn xóa, nằm ở selected ở gui
         {
+            _context = new();
             _context.AirConditioners.Remove(obj);
             // build câu delete from where obj.ID
             _context.SaveChanges(); // chính thức lệnh xóa trong RAM
@@ -42,6 +43,7 @@ namespace AirConditionerShop.DAL.Repository
 
         public void Update(AirConditioner obj)// obj muốn update, có id muốn update, nằm ở selected ở gui
         {
+            _context = new();
             _context.AirConditioners.Update(obj);
             // build câu cập nhật from where obj.ID
             _context.SaveChanges(); // chính thức lệnh xóa trong RAM
@@ -49,6 +51,7 @@ namespace AirConditionerShop.DAL.Repository
 
         public void Create(AirConditioner obj)// obj muốn Create, có id muốn create, nằm ở selected ở gui
         {
+            _context = new();
             _context.AirConditioners.Add(obj);
             // build câu insert into
             _context.SaveChanges(); // chính thức lệnh xóa trong RAM

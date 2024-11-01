@@ -27,7 +27,7 @@ namespace AirConditionerShop_HoangNgocTrinh
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow m = new();
-            m.Show();
+            m.ShowDialog();
         }
     }
 }

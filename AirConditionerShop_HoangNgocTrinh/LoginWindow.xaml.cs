@@ -28,6 +28,7 @@ namespace AirConditionerShop_HoangNgocTrinh
         {
             MainWindow m = new();
             m.ShowDialog();
+            // test new name
         }
     }
 }

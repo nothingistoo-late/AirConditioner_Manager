@@ -30,5 +30,10 @@ namespace AirConditionerShop_HoangNgocTrinh
             m.ShowDialog();
             // test new name
         }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

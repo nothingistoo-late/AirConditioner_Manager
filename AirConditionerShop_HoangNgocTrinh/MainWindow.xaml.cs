@@ -106,5 +106,10 @@ namespace AirConditionerShop_HoangNgocTrinh
             AirCondDataGrid.ItemsSource = null; // xóa data cũ
             AirCondDataGrid.ItemsSource = list;
         }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

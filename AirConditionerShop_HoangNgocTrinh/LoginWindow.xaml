@@ -19,7 +19,7 @@
         <Label Content="Password" HorizontalAlignment="Left" Height="45" Margin="68,251,0,0" VerticalAlignment="Top" Width="107" Foreground="#ff4500" Grid.Column="2"/>
         <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="45" TextWrapping="Wrap"  VerticalAlignment="Top" Width="374" TabIndex="1" Grid.Column="2" Margin="180,249,0,0"/>
         <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Height="55" Margin="68,339,0,0" VerticalAlignment="Top" Width="230" TabIndex="2"  Grid.Column="2" Click="LoginButton_Click" Style="{StaticResource RedButtonStyle}" />
-        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="55" Margin="324,339,0,0" VerticalAlignment="Top" Width="230" TabIndex="3"  Grid.Column="2" Style="{StaticResource RedButtonStyle}"/>
+        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="55" Margin="324,339,0,0" VerticalAlignment="Top" Width="230" TabIndex="3"  Grid.Column="2" Style="{StaticResource RedButtonStyle}" Click="QuitButton_Click"/>
         <Label Content="© 2024 giáo.làng" HorizontalAlignment="Left" Height="45" Margin="223,448,0,0" VerticalAlignment="Top" Width="182" Foreground="#ffff00" Grid.Column="2"/>
 
     </Grid>

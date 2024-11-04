@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AirConditionerShop.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AirConditionerShop.DAL;
 
@@ -26,10 +27,19 @@ public partial class AirConditionerShop2024DbContext : DbContext
     public virtual DbSet<StaffMember> StaffMembers { get; set; }
 
     public virtual DbSet<SupplierCompany> SupplierCompanies { get; set; }
+    private string GetConnectionString()
+    {
+        IConfiguration config = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true, true)
+                    .Build();
+        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
+
+        return strConn;
+    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=123456;database=AirConditionerShop2024DB;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer(GetConnectionString());
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

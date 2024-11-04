@@ -19,6 +19,8 @@ namespace AirConditionerShop_HoangNgocTrinh
     public partial class MainWindow : Window
     {
         private AirConService _AirConService = new();
+
+        public StaffMember CurruntAccount { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -31,11 +33,22 @@ namespace AirConditionerShop_HoangNgocTrinh
             DetailWindow d = new();
             d.ShowDialog();// làm xong rồi mới quay về MainWindow
             FillDataGrid(_AirConService.GetAllAirCons());
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AirCondDataGrid.ItemsSource = _AirConService.GetAllAirCons();
+            if (CurruntAccount == null)
+                return;
+            if ( CurruntAccount.Role == 2 )
+            {
+                UpdateButton.IsEnabled = false;
+                DeleteButton.IsEnabled = false;
+                CreateButton.IsEnabled = false;
+            }
+
+            HelloMsgLabel.Content = "Hello " + CurruntAccount.FullName;
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -108,7 +121,11 @@ namespace AirConditionerShop_HoangNgocTrinh
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Are You Sure Want To Exit!!!", "Exit!!!!", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }

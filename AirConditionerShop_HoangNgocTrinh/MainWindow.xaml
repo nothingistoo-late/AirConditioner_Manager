@@ -36,7 +36,7 @@
                 <DataGridTextColumn Header="Quantity" Width="70" Binding="{Binding Quantity}" />
                 <DataGridTextColumn Header="Price ($)" Width="100" Binding="{Binding DollarPrice}" />
                 <DataGridTextColumn Header="Supplier ID" Width="70" Binding="{Binding SupplierId}" />
-                <DataGridTextColumn Header="Supplier Name" Width="140" Binding="{Binding SupplierCompany.SupplierName}" />
+                <DataGridTextColumn Header="Country" Width="140" Binding="{Binding Supplier.PlaceOfOrigin}" />
             </DataGrid.Columns>
         </DataGrid>
 

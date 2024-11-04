@@ -1,4 +1,5 @@
 ﻿using AirConditionerShop.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,14 @@ namespace AirConditionerShop.DAL.Repository
         {
             _context = new();
 
-            return _context.AirConditioners.ToList();
+            // return _context.AirConditioners.ToList(); như này là kh join
             //              trả về DBSet mình convert thành List
             // đã select * from AirConditioner
+            return _context.AirConditioners.Include("Supplier").ToList();
+
+            //join 2 bảng qua navigation path, biến đối tượng ncc 
+            // vì 1 máy lạnh thì có 1 ncc nói chung (object)
+
         }
 
         // hàm create(), update(), delete() đều nhận vào 1 object

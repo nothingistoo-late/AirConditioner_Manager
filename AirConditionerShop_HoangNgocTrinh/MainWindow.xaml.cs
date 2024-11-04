@@ -31,7 +31,6 @@ namespace AirConditionerShop_HoangNgocTrinh
             DetailWindow d = new();
             d.ShowDialog();// làm xong rồi mới quay về MainWindow
             FillDataGrid(_AirConService.GetAllAirCons());
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

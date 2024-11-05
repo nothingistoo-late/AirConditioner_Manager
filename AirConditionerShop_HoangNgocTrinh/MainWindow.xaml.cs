@@ -1,5 +1,6 @@
 ﻿using AirConditionerShop.BLL.Services;
 using AirConditionerShop.DAL.Entities;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -126,6 +127,28 @@ namespace AirConditionerShop_HoangNgocTrinh
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((!QuantityTextBox.Text.IsNullOrEmpty()) && (int.TryParse(QuantityTextBox.Text, out int result) == false))
+            {
+                MessageBox.Show("Quantity Must Be Number", "Invalid Vallue", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (!FeatureFunctionTextBox.Text.IsNullOrEmpty() && QuantityTextBox.Text.IsNullOrEmpty())
+            {
+                FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(FeatureFunctionTextBox.Text, null));
+                return;
+            }
+            if (FeatureFunctionTextBox.Text.IsNullOrEmpty() && !QuantityTextBox.Text.IsNullOrEmpty())
+            {
+                {
+                    FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(null, int.Parse(QuantityTextBox.Text)));
+                    return;
+                }
+            }
+            FillDataGrid(_AirConService.GetAllAirCons());
         }
     }
 }

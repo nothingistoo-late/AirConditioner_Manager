@@ -131,11 +131,13 @@ namespace AirConditionerShop_HoangNgocTrinh
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((!QuantityTextBox.Text.IsNullOrEmpty()) && (int.TryParse(QuantityTextBox.Text, out int result) == false))
+            if ((!QuantityTextBox.Text.IsNullOrEmpty()) && (int.TryParse(QuantityTextBox.Text, out int result) == false)) // check if quantity is not emty, and itsnt number
             {
                 MessageBox.Show("Quantity Must Be Number", "Invalid Vallue", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
+            //quantity or function has value
             if (!FeatureFunctionTextBox.Text.IsNullOrEmpty() && QuantityTextBox.Text.IsNullOrEmpty())
             {
                 FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(FeatureFunctionTextBox.Text, null));
@@ -148,7 +150,9 @@ namespace AirConditionerShop_HoangNgocTrinh
                     return;
                 }
             }
-            FillDataGrid(_AirConService.GetAllAirCons());
+
+            // both of them has value
+            FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(FeatureFunctionTextBox.Text, int.Parse(QuantityTextBox.Text)));
         }
     }
 }

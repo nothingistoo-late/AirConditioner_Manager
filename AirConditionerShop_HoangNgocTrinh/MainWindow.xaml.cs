@@ -150,7 +150,11 @@ namespace AirConditionerShop_HoangNgocTrinh
                     return;
                 }
             }
-
+            if (FeatureFunctionTextBox.Text.IsNullOrEmpty () && QuantityTextBox.Text.IsNullOrEmpty())
+            {
+                FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(null, null));
+                return;
+            }    
             // both of them has value
             FillDataGrid(_AirConService.SearchAirConByFeatureAndQuantity(FeatureFunctionTextBox.Text, int.Parse(QuantityTextBox.Text)));
         }

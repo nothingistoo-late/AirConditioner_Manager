@@ -188,7 +188,13 @@ namespace AirConditionerShop_HoangNgocTrinh
 
             if (!convertStatus)
             {
-                MessageBox.Show("Dollart Price Must Be A Number!!", "Require Information", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Dollar Price Must Be A Number!!", "Require Information", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (SupplierIdComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Supplier Is Required!!", "Require Information", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

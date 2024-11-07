@@ -50,8 +50,8 @@ nuget package (C#)
 	Microsoft.EntityFrameworkCore.Tool
 	Microsoft.EntityFrameworkCore.SqlSever
 
-	Microsoft.Extendsions.Configuration
-	Microsoft.Extendsions.Configuration.Json
+	Microsoft.Extensions.Configuration
+	Microsoft.Extensions.Configuration.Json
 1. vào project DAL (dính database), phải chuột trên dependency chọn manage nuget packages, nhấn browse rồi gõ entity rồi chọn enter, rồi chọn 4 cháu ef ở trên, tích vào từng thằng, install, chờ dấu tích xanh mới làm thằng khác
 
 2. câu lệnh quan trọng không thể thiếu, không làm, mất 9tr vnd (6tr kì này + 3m kì sau)
@@ -66,8 +66,30 @@ mở file note lên có câu lệnh gợi í, lấy câu lệnh này, sửa lạ
 
 * ấn phải chuột trên DAL project, chọn termial để mở cmd cbi gõ lệnh
 * copy cái câu lệnh DBCONTEXT trong file note, dán vào cmd (phải chuội là paste) và ấn enter
-dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database=AirConditionerShop2024DB;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir "Entities" --context-dir "."
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database=BookManagementDb;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir "Entities" --context-dir "."
 
 * nhân phẩm tốt thì thành công có 4 class đc tự động tạo ra!!!
 
 >>>> một số máy kh chịu dùng (local) trong chuỗi kết nối CSDL, thay bằng tên máy và instance của SQL Sever
+
+
+appsettings.json
+
+nhớ copy always như copy local ấy
+{
+"ConnectionStrings": {
+"DefaultConnectionStringDB": "server =(local); database= BookManagementDb;uid=sa;pwd=123456; TrustServerCertificate=True"
+}
+}
+
+private string GetConnectionString()
+ {
+IConfiguration config = new ConfigurationBuilder()
+ 	.SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json",true,true)
+            .Build();
+var strConn = config["ConnectionStrings: DefaultConnectionStringDB "];
+
+return strConn;
+}
+

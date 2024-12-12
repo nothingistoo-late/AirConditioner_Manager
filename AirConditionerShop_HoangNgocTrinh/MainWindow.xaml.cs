@@ -20,7 +20,7 @@ namespace AirConditionerShop_HoangNgocTrinh
     public partial class MainWindow : Window
     {
         private AirConService _AirConService = new();
-
+        private UserService _user = new(); 
         public StaffMember CurruntAccount { get; set; }
         public MainWindow()
         {
@@ -40,9 +40,9 @@ namespace AirConditionerShop_HoangNgocTrinh
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AirCondDataGrid.ItemsSource = _AirConService.GetAllAirCons();
-            if (CurruntAccount == null)
-                return;
-            if ( CurruntAccount.Role == 2 )
+            
+            
+            if ( _user.Authenticate(Emai)   .Role == 2 )
             {
                 UpdateButton.IsEnabled = false;
                 DeleteButton.IsEnabled = false;

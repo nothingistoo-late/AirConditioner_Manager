@@ -66,7 +66,7 @@ mở file note lên có câu lệnh gợi í, lấy câu lệnh này, sửa lạ
 
 * ấn phải chuột trên DAL project, chọn termial để mở cmd cbi gõ lệnh
 * copy cái câu lệnh DBCONTEXT trong file note, dán vào cmd (phải chuội là paste) và ấn enter
-dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database=BookManagementDb;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir "Entities" --context-dir "."
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database=Fall24PerfumeStoreDB;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir "Entities" --context-dir "."
 
 * nhân phẩm tốt thì thành công có 4 class đc tự động tạo ra!!!
 
@@ -78,7 +78,7 @@ appsettings.json
 nhớ copy always như copy local ấy
 {
 "ConnectionStrings": {
-"DefaultConnectionStringDB": "server =(local); database= BookManagementDb;uid=sa;pwd=123456; TrustServerCertificate=True"
+"DefaultConnectionStringDB": "server =(local); database= Fall24PerfumeStoreDB;uid=sa;pwd=123456; TrustServerCertificate=True"
 }
 }
 

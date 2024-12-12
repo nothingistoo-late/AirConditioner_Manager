@@ -54,8 +54,6 @@ namespace AirConditionerShop_HoangNgocTrinh
             d.CurruntAccount = user;
             d.Show();
             this.Hide();
-
-
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
